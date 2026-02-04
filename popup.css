@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  width: 400px;
+  min-height: 300px;
+  background: #f6f8fa;
+}
+
+.container {
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 20px;
+  color: #24292f;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 16px;
+  color: #24292f;
+  margin-bottom: 15px;
+}
+
+.section {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-primary {
+  background: #2da44e;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2c974b;
+}
+
+.btn-secondary {
+  background: #0969da;
+  color: white;
+  padding: 8px 12px;
+  font-size: 12px;
+  width: auto;
+}
+
+.btn-secondary:hover {
+  background: #0860ca;
+}
+
+.btn-link {
+  background: none;
+  color: #0969da;
+  padding: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #24292f;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+.help-text {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #656d76;
+  line-height: 1.4;
+}
+
+.help-text a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+.help-text a:hover {
+  text-decoration: underline;
+}
+
+.help-text strong {
+  font-weight: 600;
+  color: #24292f;
+}
+
+/* Loading */
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0969da;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loading-section p {
+  text-align: center;
+  color: #656d76;
+  font-size: 13px;
+}
+
+/* Stats */
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#stats-container {
+  background: white;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.member-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #d0d7de;
+  transition: background 0.2s;
+}
+
+.member-card:last-child {
+  border-bottom: none;
+}
+
+.member-card:hover {
+  background: #f6f8fa;
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.member-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #d0d7de;
+}
+
+.member-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #24292f;
+}
+
+.member-username {
+  font-size: 12px;
+  color: #656d76;
+}
+
+.review-count {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0969da;
+  min-width: 30px;
+  text-align: right;
+}
+
+.review-count.zero {
+  color: #1a7f37;
+}
+
+.review-count.high {
+  color: #cf222e;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #656d76;
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.empty-state small {
+  font-size: 12px;
+}
+
+/* Error */
+.error-message {
+  background: #fff1f0;
+  border: 1px solid #ffcccb;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.error-message p {
+  color: #cf222e;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#auth-section p {
+  text-align: center;
+  color: #656d76;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+}
