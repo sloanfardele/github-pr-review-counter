@@ -25,58 +25,7 @@ Since Chrome extensions can't securely handle OAuth without a backend server, we
 5. Click "Generate token"
 6. **Copy the token immediately** (you won't see it again)
 
-### 2. Modify the Extension for Token Input
-
-Update `popup.html` to include a token input field in the auth section:
-
-```html
-<div id="auth-section" class="section">
-  <p>Enter your GitHub Personal Access Token</p>
-  <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
-  <button id="connect-btn" class="btn btn-primary">Connect GitHub</button>
-  <p class="help-text">
-    <a href="https://github.com/settings/tokens" target="_blank">Create a token</a> 
-    with 'repo' and 'read:org' scopes
-  </p>
-</div>
-```
-
-Update `popup.js` authenticate function:
-
-```javascript
-async function authenticate() {
-  const token = document.getElementById('token-input').value.trim();
-  
-  if (!token) {
-    showError('Please enter a GitHub Personal Access Token');
-    return;
-  }
-
-  try {
-    showSection('loading');
-    
-    // Verify token works
-    const response = await fetch('https://api.github.com/user', {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Invalid token');
-    }
-
-    accessToken = token;
-    await chrome.storage.local.set({ accessToken: token });
-    showSection('config');
-  } catch (error) {
-    showError('Failed to authenticate: ' + error.message);
-  }
-}
-```
-
-### 3. Install the Extension
+### 2. Install the Extension
 
 1. Open Chrome and go to `chrome://extensions/`
 2. Enable "Developer mode" (toggle in top right)
@@ -84,7 +33,7 @@ async function authenticate() {
 4. Select the folder containing your extension files
 5. The extension icon should appear in your toolbar
 
-### 4. Create Simple Icons (Optional)
+### 3. Create Simple Icons (Optional)
 
 You can create simple placeholder icons or use the extension without them:
 
@@ -97,7 +46,7 @@ convert -size 128x128 xc:#2da44e icon128.png
 
 Or download GitHub logo icons from a site like [icons8.com](https://icons8.com)
 
-### 5. Use the Extension
+### 4. Use the Extension
 
 1. Click the extension icon in your toolbar
 2. Enter your GitHub Personal Access Token
