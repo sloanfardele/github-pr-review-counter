@@ -192,30 +192,55 @@ async function githubAPI(endpoint) {
 
 // Display results
 function displayResults(memberStats) {
+  statsContainer.innerHTML = ''; // Clear previous content
+
   if (memberStats.length === 0) {
-    statsContainer.innerHTML = `
-      <div class="empty-state">
-        <p>No team members found</p>
-        <small>Check your organization and team configuration</small>
-      </div>
-    `;
+    const emptyState = document.createElement('div');
+    emptyState.className = 'empty-state';
+    
+    const p = document.createElement('p');
+    p.textContent = 'No team members found';
+    
+    const small = document.createElement('small');
+    small.textContent = 'Check your organization and team configuration';
+    
+    emptyState.appendChild(p);
+    emptyState.appendChild(small);
+    statsContainer.appendChild(emptyState);
   } else {
-    statsContainer.innerHTML = memberStats.map(member => {
+    memberStats.forEach(member => {
       const countClass = member.pendingReviews === 0 ? 'zero' : 
                         member.pendingReviews >= 5 ? 'high' : '';
       
-      return `
-        <div class="member-card">
-          <div class="member-info">
-            <img src="${member.avatar_url}" alt="${member.login}" class="member-avatar">
-            <div>
-              <div class="member-name">${member.login}</div>
-            </div>
-          </div>
-          <div class="review-count ${countClass}">${member.pendingReviews}</div>
-        </div>
-      `;
-    }).join('');
+      const card = document.createElement('div');
+      card.className = 'member-card';
+      
+      const info = document.createElement('div');
+      info.className = 'member-info';
+      
+      const img = document.createElement('img');
+      img.src = member.avatar_url;
+      img.alt = member.login;
+      img.className = 'member-avatar';
+      
+      const nameDivWrapper = document.createElement('div');
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'member-name';
+      nameDiv.textContent = member.login;
+      nameDivWrapper.appendChild(nameDiv);
+      
+      info.appendChild(img);
+      info.appendChild(nameDivWrapper);
+      
+      const countDiv = document.createElement('div');
+      countDiv.className = `review-count ${countClass}`;
+      countDiv.textContent = member.pendingReviews;
+      
+      card.appendChild(info);
+      card.appendChild(countDiv);
+      
+      statsContainer.appendChild(card);
+    });
   }
 
   showSection('results');

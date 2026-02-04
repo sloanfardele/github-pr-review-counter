@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GitHub PR Review Counter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Track pending PR reviews for your GitHub team members",
   "permissions": [
     "storage",
