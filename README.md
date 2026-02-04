@@ -91,7 +91,7 @@ Or download GitHub logo icons from a site like [icons8.com](https://icons8.com)
 Your team URL looks like:
 ```
 https://github.com/orgs/YOUR-ORG/teams/YOUR-TEAM-SLUG
-                            ^^^^^^^^           ^^^^^^^^^^^^^^^
+                        ^^^^^^^^       ^^^^^^^^^^^^^^
 ```
 
 Example:
