@@ -141,7 +141,7 @@ async function fetchTeamMembers(org, team) {
 async function getPendingReviewCount(org, username) {
   try {
     // Search for PRs where the user is requested as a reviewer
-    const query = `type:pr state:open org:${org} review-requested:${username}`;
+    const query = `type:pr state:open org:${org} user-review-requested:${username}`;
     const searchResults = await githubAPI(`/search/issues?q=${encodeURIComponent(query)}&per_page=100`);
     
     const prs = searchResults.items || [];
